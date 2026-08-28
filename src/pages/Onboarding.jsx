@@ -14,21 +14,28 @@ export default function Onboarding() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [extractedData, setExtractedData] = useState(null);
 
+  const [errorMsg, setErrorMsg] = useState(null);
+
   const handleAiSubmit = async () => {
     setIsProcessing(true);
+    setErrorMsg(null);
     
     try {
-      // Direct call to local Ollama API
-      const response = await fetch('http://localhost:11434/api/generate', {
+      // Call through Vite proxy to avoid CORS issues
+      const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'llama3.2', // Adjust if specific version tag is needed like llama3.2:latest
+          model: 'llama3.2', 
           prompt: `Extract the following details from this text into a JSON object with keys: purpose, business_type, project_cost, family_income. Return ONLY valid JSON, nothing else. Text: "${aiInput}"`,
           stream: false,
           format: 'json'
         })
       });
+      
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
       
       const data = await response.json();
       let parsed = JSON.parse(data.response);
@@ -36,6 +43,7 @@ export default function Onboarding() {
       setStep(1); // Move to review step
     } catch (error) {
       console.error("Failed to parse via Ollama", error);
+      setErrorMsg("Could not connect to local Ollama (Llama 3.2). Using mock data instead for demonstration.");
       // Fallback for demo if Ollama isn't running
       setExtractedData({
         purpose: "Business",
@@ -43,7 +51,7 @@ export default function Onboarding() {
         project_cost: "400000",
         family_income: "300000"
       });
-      setStep(1);
+      setTimeout(() => setStep(1), 2000);
     } finally {
       setIsProcessing(false);
     }
@@ -82,6 +90,12 @@ export default function Onboarding() {
           >
             {isProcessing ? 'Understanding...' : 'Understand My Requirement'}
           </Button>
+          
+          {errorMsg && (
+            <div className="mt-4 p-3 bg-gray rounded text-error text-small border border-error">
+              {errorMsg}
+            </div>
+          )}
         </Card>
       )}
 
@@ -110,7 +124,7 @@ export default function Onboarding() {
           
           <div className="flex gap-4">
             <Button variant="secondary" onClick={() => setStep(0)}>Edit</Button>
-            <Button variant="primary" className="flex-1" onClick={() => navigate('/matches')}>Looks correct</Button>
+            <Button variant="primary" className="flex-1" onClick={() => navigate('/matches', { state: { profile: extractedData } })}>Looks correct</Button>
           </div>
         </Card>
       )}
