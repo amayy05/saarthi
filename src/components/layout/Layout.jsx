@@ -5,7 +5,7 @@ import './layout.css';
 
 export default function Layout() {
   const location = useLocation();
-  const isPublicRoute = location.pathname === '/';
+  const isPublicRoute = ['/', '/login', '/signup'].includes(location.pathname);
 
   return (
     <div className="app-container">
@@ -25,13 +25,15 @@ export default function Layout() {
           </Link>
           
           <div className="header-actions">
-            <nav className="desktop-nav">
-              <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-              <Link to="/matches" className={location.pathname === '/matches' ? 'active' : ''}>Matches</Link>
-              <Link to="/simulator" className={location.pathname === '/simulator' ? 'active' : ''}>Calculator</Link>
-              <Link to="/partners" className={location.pathname === '/partners' ? 'active' : ''}>Partners</Link>
-              <Link to="/documents" className={location.pathname === '/documents' ? 'active' : ''}>Docs</Link>
-            </nav>
+            {!isPublicRoute && (
+              <nav className="desktop-nav">
+                <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+                <Link to="/matches" className={location.pathname === '/matches' ? 'active' : ''}>Matches</Link>
+                <Link to="/simulator" className={location.pathname === '/simulator' ? 'active' : ''}>Calculator</Link>
+                <Link to="/partners" className={location.pathname === '/partners' ? 'active' : ''}>Partners</Link>
+                <Link to="/documents" className={location.pathname === '/documents' ? 'active' : ''}>Docs</Link>
+              </nav>
+            )}
             <div className="lang-selector">
               <span className="active">EN</span> | <span>हिंदी</span> | <span>मराठी</span>
             </div>
