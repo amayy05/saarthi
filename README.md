@@ -1,16 +1,37 @@
-# React + Vite
+# SAARTHI-SC (Smart Assistance & Routing for SC Credit)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Problem Statement ID:** 26092 (Smart India Hackathon 2026)  
+**Problem Statement:** AI-Driven Scheme Matching for Marginalized Entrepreneurs  
 
-Currently, two official plugins are available:
+## Overview
+SAARTHI-SC is a multilingual digital platform designed to help citizens discover suitable government-backed financial schemes, understand eligibility, estimate repayment, locate an appropriate nearby channel partner, and prepare their application documents.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The platform is positioned as an **intelligent discovery, explanation, and routing layer** around the existing government financing ecosystem. 
 
-## React Compiler
+**Core Principle:** *AI understands the citizen. Government rules determine eligibility. The system explains the result. The citizen chooses the next step.*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Features
+1. **AI Profile Assistant:** Uses local LLM (Ollama / Llama 3.2b) to extract applicant details from natural language input.
+2. **Explainable Scheme Matching:** Matches applicants to schemes with a transparent "Why this matches you" explanation.
+3. **Financial Simulator:** Interactive EMI and repayment calculator with visual principal/interest breakdown.
+4. **Geo-Spatial Partner Locator:** Interactive map (Leaflet) to find nearby available channelizing agencies.
+5. **Document Readiness:** Step-by-step checklist to ensure applicants have required documentation before applying.
 
-## Expanding the Oxlint configuration
+## Tech Stack
+- **Frontend Framework:** React + Vite
+- **Routing:** React Router (`react-router-dom`)
+- **Styling:** Vanilla CSS with custom modern civic-fintech design tokens
+- **Map Integration:** React Leaflet (`react-leaflet`)
+- **AI Integration:** Local Ollama API (Llama 3.2b)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Running Locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+3. To test the AI Onboarding functionality, ensure your local Ollama instance is running with the Llama 3.2b model. If it is not running, the app will gracefully fall back to mocked data for demonstration purposes.
