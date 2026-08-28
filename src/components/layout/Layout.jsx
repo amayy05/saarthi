@@ -5,7 +5,7 @@ import './layout.css';
 
 export default function Layout() {
   const location = useLocation();
-  const isPublicRoute = ['/', '/login', '/signup'].includes(location.pathname);
+  const isPublicRoute = ['/', '/login', '/signup', '/onboarding'].includes(location.pathname);
 
   return (
     <div className="app-container">
