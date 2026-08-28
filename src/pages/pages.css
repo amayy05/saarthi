@@ -1,0 +1,137 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: var(--text-display);
+  color: var(--primary);
+}
+
+.hero-subtitle {
+  font-size: var(--text-h3);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-large {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-h3);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+.how-it-works-card {
+  max-width: 600px;
+  background-color: rgba(30, 58, 138, 0.02);
+}
+
+.steps-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-arrow {
+  color: var(--text-muted);
+  font-size: 1.5rem;
+}
+
+/* Onboarding */
+.onboarding-card {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-input-area {
+  position: relative;
+}
+
+.ai-textarea {
+  width: 100%;
+  resize: vertical;
+  padding-bottom: 40px;
+}
+
+.mic-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-label);
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.data-label {
+  color: var(--text-muted);
+}
+
+.data-value {
+  font-weight: 600;
+  color: var(--text-main);
+}
