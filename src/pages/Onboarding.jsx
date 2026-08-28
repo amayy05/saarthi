@@ -27,7 +27,15 @@ export default function Onboarding() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'llama3.2', 
-          prompt: `Extract the following details from this text into a JSON object with keys: purpose, business_type, project_cost, family_income. Return ONLY valid JSON, nothing else. Text: "${aiInput}"`,
+          prompt: `Analyze the text and extract details into a JSON object.
+Use EXACTLY these keys:
+- "purpose": either "Education" or "Business"
+- "business_type": e.g., "Student", "Dairy", "Retail", or "N/A"
+- "project_cost": numeric value or 0
+- "family_income": numeric value or 0
+
+Return ONLY valid JSON. No explanations.
+Text: "${aiInput}"`,
           stream: false,
           format: 'json'
         })
