@@ -4,6 +4,21 @@
   min-height: 100vh;
 }
 
+.official-micro-header {
+  background-color: var(--primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.official-slogan {
+  opacity: 0.9;
+}
+
 .app-header {
   background-color: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
@@ -11,6 +26,34 @@
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: var(--space-2);
+}
+
+.btn-text {
+  color: var(--primary);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.btn-outline-small {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-small);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-small:hover {
+  background-color: rgba(30, 58, 138, 0.05);
 }
 
 .header-content {

@@ -9,6 +9,13 @@ export default function Layout() {
 
   return (
     <div className="app-container">
+      {/* Official Micro Header */}
+      <div className="official-micro-header">
+        <div className="container">
+          <span className="official-slogan">A Government of India Initiative | Empowering SC Entrepreneurs & Students</span>
+        </div>
+      </div>
+
       {/* Top Header */}
       <header className="app-header">
         <div className="container header-content">
@@ -27,7 +34,13 @@ export default function Layout() {
             <div className="lang-selector">
               <span className="active">EN</span> | <span>हिंदी</span> | <span>मराठी</span>
             </div>
-            {!isPublicRoute && (
+            
+            {isPublicRoute ? (
+              <div className="auth-buttons">
+                <Link to="/login" className="btn-text">Login</Link>
+                <Link to="/signup" className="btn-outline-small">Sign Up</Link>
+              </div>
+            ) : (
               <div className="user-profile">
                 <User size={20} />
               </div>
