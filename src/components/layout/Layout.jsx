@@ -26,6 +26,7 @@ export default function Layout() {
           
           <div className="header-actions">
             <nav className="desktop-nav">
+              <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
               <Link to="/matches" className={location.pathname === '/matches' ? 'active' : ''}>Matches</Link>
               <Link to="/simulator" className={location.pathname === '/simulator' ? 'active' : ''}>Calculator</Link>
               <Link to="/partners" className={location.pathname === '/partners' ? 'active' : ''}>Partners</Link>
